@@ -1,0 +1,1 @@
+enum LoginStatus { LOADING, COMPLLETED, ERROR, NOTHING }
