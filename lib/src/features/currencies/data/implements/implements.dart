@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:osa_pro/src/core/api/network_info.dart';
 
 import 'package:osa_pro/src/core/error/failure.dart';
-import 'package:osa_pro/src/features/currencies/data/models/currencies_model.dart';
 import 'package:osa_pro/src/features/currencies/data/sources/currencies_local_data_sources.dart';
 
 import 'package:osa_pro/src/features/currencies/domain/entities/currencies_entities.dart';
@@ -32,12 +31,12 @@ class CurrenciesRepositoryImp implements CurrenciesRepository {
         //     await _companyLocalDataSources.getCompanyInfo(companyId: companyId);
         return Right(currenciesList);
       } else {
-        print('Currencies######### : ');
+        // print('Currencies######### : ');
         if (await netWorkInfo.isConnected) {
           try {
             final remoteCurrencies = await remoteDataSource.getAllCurrencies();
             remoteCurrencies.forEach((currency) async {
-              print('Currencies######### : $currency');
+              // print('Currencies######### : $currency');
               await localDataSources.saveCurrencies(currency);
             });
             // await _companyLocalDataSources.saveCompanyInfo(

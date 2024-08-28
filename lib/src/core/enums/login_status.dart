@@ -1,1 +1,1 @@
-enum LoginStatus { LOADING, COMPLLETED, ERROR, NOTHING }
+enum RequestStatus { LOADING, COMPLLETED, ERROR, NOTHING }

@@ -11,63 +11,77 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home Page'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Login"),
-          Center(
-              child: OutlinedButton(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            pageList.length,
+            (index) {
+              return OutlinedButton(
                   onPressed: () {
-                    Get.toNamed(RoutesName.auth);
+                    Get.toNamed(pageList[index]['page']);
                     // Navigator.push(
                     //     context,
                     //     AppRoute.generate(
                     //         RouteSettings(name: RoutesName.auth)));
                   },
-                  child: Text("Login"))),
-          Center(
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.toNamed(RoutesName.userInfoPage);
-                    // Navigator.push(
-                    //     context,
-                    //     AppRoute.generate(
-                    //         RouteSettings(name: RoutesName.auth)));
-                  },
-                  child: Text("User Info"))),
-          Center(
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.toNamed(RoutesName.branchInfoPage);
-                    // Navigator.push(
-                    //     context,
-                    //     AppRoute.generate(
-                    //         RouteSettings(name: RoutesName.auth)));
-                  },
-                  child: Text("Branch Info Page"))),
-          Center(
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.toNamed(RoutesName.currenciesPage);
-                    // Navigator.push(
-                    //     context,
-                    //     AppRoute.generate(
-                    //         RouteSettings(name: RoutesName.auth)));
-                  },
-                  child: Text("Currencies Page"))),
-          Center(
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.toNamed(RoutesName.deviceInfo);
-                    // Navigator.push(
-                    //     context,
-                    //     AppRoute.generate(
-                    //         RouteSettings(name: RoutesName.auth)));
-                  },
-                  child: Text("DeviceInfo")))
-        ],
+                  child: Text(pageList[index]['name']));
+            },
+          ),
+        ),
       ),
     );
   }
 }
+
+List<Map<String, dynamic>> pageList = [
+  {
+    'name': RoutesName.auth,
+    'page': RoutesName.auth,
+  },
+  {
+    'name': RoutesName.userInfoPage,
+    'page': RoutesName.userInfoPage,
+  },
+  {
+    'name': RoutesName.branchInfoPage,
+    'page': RoutesName.branchInfoPage,
+  },
+  {
+    'name': RoutesName.companyInfoPage,
+    'page': RoutesName.companyInfoPage,
+  },
+  {
+    'name': RoutesName.currenciesPage,
+    'page': RoutesName.currenciesPage,
+  },
+  {
+    'name': RoutesName.systemDocsPage,
+    'page': RoutesName.systemDocsPage,
+  },
+  {
+    'name': RoutesName.salesManMethodsPage,
+    'page': RoutesName.salesManMethodsPage,
+  },
+  {
+    'name': RoutesName.userStorePage,
+    'page': RoutesName.userStorePage,
+  },
+  {
+    'name': RoutesName.unitsPage,
+    'page': RoutesName.unitsPage,
+  },
+  {
+    'name': RoutesName.itemGroupsPage,
+    'page': RoutesName.itemGroupsPage,
+  },
+  {
+    'name': RoutesName.itemsPage,
+    'page': RoutesName.itemsPage,
+  },
+  {
+    'name': RoutesName.itemUnitsPage,
+    'page': RoutesName.itemUnitsPage,
+  },
+];

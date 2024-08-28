@@ -13,7 +13,7 @@ abstract class CurrenciesRemoteDataSource {
 }
 
 class CurrenciesRemoteDataSourceImp implements CurrenciesRemoteDataSource {
-  final HttpMethods _networkApiServices = HttpMethods(client: sl());
+  final HttpMethods _httpMethods = HttpMethods(client: sl());
   final SharedPreferencesService _sharedPreferencesService =
       SharedPreferencesService(sl());
   @override
@@ -25,11 +25,11 @@ class CurrenciesRemoteDataSourceImp implements CurrenciesRemoteDataSource {
     };
 
     try {
-      List remoteCurrencies = await _networkApiServices.postApi(
+      List response = await _httpMethods.postApi(
           pathUri: EndPoints.currenciesUri, body: body) as List;
 
       final List<CurrenciesModel> currenciesModel =
-          remoteCurrencies.map<CurrenciesModel>((jsonCurrenciesModel) {
+          response.map<CurrenciesModel>((jsonCurrenciesModel) {
         return CurrenciesModel.fromJson(jsonCurrenciesModel);
       }).toList();
 

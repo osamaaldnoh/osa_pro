@@ -12,7 +12,7 @@ class UserInfoController extends GetxController {
   RxString message = ''.obs;
 
   final UserInfoUseCase userInfoUseCase;
-  final status = LoginStatus.NOTHING.obs;
+  final status = RequestStatus.NOTHING.obs;
   RxBool isLoading = false.obs;
   Rx<UserEntity> userEntity = Rx(UserEntity(
       id: 0,
@@ -35,17 +35,17 @@ class UserInfoController extends GetxController {
     // LoginLocalDataSourceImp localDataSource =
     //     LoginLocalDataSourceImp(sharedPreferences: sl());
 
-    status.value = LoginStatus.LOADING;
+    status.value = RequestStatus.LOADING;
     final userData = await userInfoUseCase();
 
     print("User Data :::::::::${userData}");
     userData.fold((failure) {
-      status.value = LoginStatus.ERROR;
+      status.value = RequestStatus.ERROR;
       message.value = failure.message;
       FetchDataException(_mapFailureToMessage(failure));
     }, (loginuser) {
       print("User Info ::::: ${loginuser}");
-      status.value = LoginStatus.COMPLLETED;
+      status.value = RequestStatus.COMPLLETED;
       userEntity.value = loginuser;
       Get.snackbar("Success", "Post Added Successfully");
       // LoadedPostsState(posts: posts);

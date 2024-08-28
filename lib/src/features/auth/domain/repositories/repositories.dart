@@ -1,9 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:osa_pro/src/core/error/failure.dart';
-import 'package:osa_pro/src/features/auth/domain/entities/auth_entities.dart';
 import 'package:osa_pro/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:osa_pro/src/features/auth/domain/entities/user_entity.dart';
-import 'package:osa_pro/src/features/user_info/domain/entities/user_entity.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, AuthResponseEntity>> loginRepo(

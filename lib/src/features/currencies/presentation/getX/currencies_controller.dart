@@ -5,17 +5,21 @@ import 'package:osa_pro/src/core/services/shared/app_shared_per_set.dart';
 import 'package:osa_pro/src/features/currencies/domain/entities/currencies_entities.dart';
 import 'package:osa_pro/src/features/currencies/domain/usecases/currencies_usecases.dart';
 
-class CurrenciesController extends GetxController {
+abstract class CurrenciesController extends GetxController {
+  void getAllCurrencies();
+}
+
+class CurrenciesControllerImp extends CurrenciesController {
   final CurrenciesUseCase _currenciesUseCase;
   RxList<CurrenciesEntity> currenciesList = RxList([]);
   RxList<CurrenciesEntity> get _currenciesList => RxList([...currenciesList]);
   // final AppSharedPerSet _appSharedPerSet = sl();
-  final authState = LoginStatus.NOTHING.obs;
+  final authState = RequestStatus.NOTHING.obs;
   RxString message = ''.obs;
-  void setRxRequestStatus(LoginStatus value) => authState.value = value;
+  void setRxRequestStatus(RequestStatus value) => authState.value = value;
 
   //
-  CurrenciesController({required CurrenciesUseCase currenciesUseCase})
+  CurrenciesControllerImp({required CurrenciesUseCase currenciesUseCase})
       : _currenciesUseCase = currenciesUseCase;
 
   @override
@@ -24,15 +28,16 @@ class CurrenciesController extends GetxController {
     getAllCurrencies();
   }
 
+  @override
   getAllCurrencies() async {
-    setRxRequestStatus(LoginStatus.LOADING);
+    setRxRequestStatus(RequestStatus.LOADING);
     final currenciesData = await _currenciesUseCase.call();
     currenciesData.fold((failure) {
-      setRxRequestStatus(LoginStatus.ERROR);
+      setRxRequestStatus(RequestStatus.ERROR);
       message.value = failure.message;
       print(message.value);
     }, (data) {
-      setRxRequestStatus(LoginStatus.COMPLLETED);
+      setRxRequestStatus(RequestStatus.COMPLLETED);
       currenciesList.value = data;
       // print(data);
       Get.snackbar("Success", "Currencies Added Successfully");

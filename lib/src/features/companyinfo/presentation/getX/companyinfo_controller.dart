@@ -5,7 +5,7 @@ import 'package:osa_pro/src/features/companyinfo/domain/usecases/company_usecase
 
 class CompanyController extends GetxController {
   final CompanyUseCase _companyUseCase;
-  final status = LoginStatus.NOTHING.obs;
+  final status = RequestStatus.NOTHING.obs;
   RxBool isLoading = false.obs;
   RxString message = ''.obs;
   Rx<CompanyEntity> companyEntity = Rx(CompanyEntity(
@@ -28,13 +28,13 @@ class CompanyController extends GetxController {
   }
 
   Future<void> getCompanyInfo() async {
-    status.value = LoginStatus.LOADING;
+    status.value = RequestStatus.LOADING;
     final companyData = await _companyUseCase.call();
     companyData.fold((failure) {
-      status.value = LoginStatus.ERROR;
+      status.value = RequestStatus.ERROR;
       message.value = failure.message;
     }, (companyInfo) {
-      status.value = LoginStatus.COMPLLETED;
+      status.value = RequestStatus.COMPLLETED;
       companyEntity.value = companyInfo;
       Get.snackbar("Success", "Branch Added Successfully");
     });

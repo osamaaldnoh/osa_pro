@@ -24,7 +24,7 @@ class AuthController extends GetxController {
   final LoginUserUseCase loginUserUseCase;
   // final LoginUserUseCase2 loginUserUseCase2;
   // final UserLoginUsecase userLoginUsecase;
-  final authStatus = LoginStatus.NOTHING.obs;
+  final authStatus = RequestStatus.NOTHING.obs;
   RxBool isLoading = false.obs;
 
   AuthController({
@@ -35,7 +35,7 @@ class AuthController extends GetxController {
 
   loginUser1() async {
     if (formstate.currentState!.validate()) {
-      authStatus.value = LoginStatus.LOADING;
+      authStatus.value = RequestStatus.LOADING;
       // var nameUser = AesEncryptAndDecrypt.encryptAES(text: userName.text);
       // var passwordUser = AesEncryptAndDecrypt.encryptAES(text: passWord.text);
       // print("name User :::::::::: ${nameUser}");
@@ -44,11 +44,11 @@ class AuthController extends GetxController {
           UserAuthEntity(username: userName.text, password: passWord.text));
 
       authData.fold((failure) {
-        authStatus.value = LoginStatus.ERROR;
+        authStatus.value = RequestStatus.ERROR;
         message.value = failure.message;
         FetchDataException(_mapFailureToMessage(failure));
       }, (authResponse) {
-        authStatus.value = LoginStatus.COMPLLETED;
+        authStatus.value = RequestStatus.COMPLLETED;
         authResponseEntity.value = authResponse;
         Get.snackbar("Success", "Post Added Successfully");
         // LoadedPostsState(posts: posts);

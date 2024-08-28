@@ -11,8 +11,22 @@ import 'package:osa_pro/src/features/companyinfo/presentation/pages/pages.dart';
 import 'package:osa_pro/src/features/currencies/presentation/getX/currencies_binding.dart';
 import 'package:osa_pro/src/features/currencies/presentation/pages/pages.dart';
 import 'package:osa_pro/src/features/home/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/item_groups/presentation/getX/item_groups_binding.dart';
+import 'package:osa_pro/src/features/item_groups/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/item_units/presentation/getX/item_units_binding.dart';
+import 'package:osa_pro/src/features/item_units/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/items/presentation/getX/items_binding.dart';
+import 'package:osa_pro/src/features/items/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/sales_man_settings/presentation/getX/sales_man_settings_binding.dart';
+import 'package:osa_pro/src/features/sales_man_settings/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/system_docs/presentation/getX/system_docs_binding.dart';
+import 'package:osa_pro/src/features/system_docs/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/units/presentation/getX/units_binding.dart';
+import 'package:osa_pro/src/features/units/presentation/pages/pages.dart';
 import 'package:osa_pro/src/features/user_info/presentation/getX/user_info_binding.dart';
 import 'package:osa_pro/src/features/user_info/presentation/pages/pages.dart';
+import 'package:osa_pro/src/features/user_store/presentation/getX/user_store_binding.dart';
+import 'package:osa_pro/src/features/user_store/presentation/pages/pages.dart';
 import 'routes.dart';
 
 class AppRoute {
@@ -59,6 +73,35 @@ class AppRoute {
           name: RoutesName.currenciesPage,
           page: () => CurrenciesPage(),
           binding: CurrenciesBinding()),
+      GetPage(
+          name: RoutesName.systemDocsPage,
+          page: () => SystemDocsPage(),
+          binding: SystemDocsBinding()),
+      GetPage(
+          name: RoutesName.salesManMethodsPage,
+          page: () => SalesManSettingsPage(),
+          binding: SalesManSettingsBinding()),
+      GetPage(
+        name: RoutesName.userStorePage,
+        page: () => UserStorePage(),
+        binding: UserStoreBinding(),
+      ),
+      GetPage(
+          name: RoutesName.unitsPage,
+          page: () => UnitsPage(),
+          binding: UnitsBinding()),
+      GetPage(
+          name: RoutesName.itemGroupsPage,
+          page: () => ItemGroupsPage(),
+          binding: ItemGroupsBinding()),
+      GetPage(
+          name: RoutesName.itemsPage,
+          page: () => ItemsPage(),
+          binding: ItemsBinding()),
+      GetPage(
+          name: RoutesName.itemUnitsPage,
+          page: () => ItemUnitsPage(),
+          binding: ItemUnitsBinding()),
     ];
   }
 }

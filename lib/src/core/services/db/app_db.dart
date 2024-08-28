@@ -2,6 +2,20 @@ import 'package:drift/drift.dart';
 import 'dart:io'; // needed to generate/find a path to db
 import 'package:drift/native.dart'; // needed to use NativeDatabase
 import 'package:osa_pro/src/core/services/db/table/currencies_table.dart';
+import 'package:osa_pro/src/core/services/db/table/item_groups_table.dart';
+import 'package:osa_pro/src/core/services/db/table/item_units_table.dart';
+import 'package:osa_pro/src/core/services/db/table/items_table.dart';
+import 'package:osa_pro/src/core/services/db/table/sales_man_settings_table.dart';
+import 'package:osa_pro/src/core/services/db/table/system_docs_table.dart';
+import 'package:osa_pro/src/core/services/db/table/units_table.dart';
+import 'package:osa_pro/src/core/services/db/table/user_store_table.dart';
+import 'package:osa_pro/src/features/item_groups/data/models/models.dart';
+import 'package:osa_pro/src/features/item_units/data/models/models.dart';
+import 'package:osa_pro/src/features/items/data/models/models.dart';
+import 'package:osa_pro/src/features/sales_man_settings/data/models/models.dart';
+import 'package:osa_pro/src/features/system_docs/data/models/models.dart';
+import 'package:osa_pro/src/features/units/data/models/models.dart';
+import 'package:osa_pro/src/features/user_store/data/models/models.dart';
 import 'package:path_provider/path_provider.dart'; // needed to get path to document's directory
 import 'package:path/path.dart' as p;
 import 'package:osa_pro/src/core/services/db/table/branch_table.dart';
@@ -17,7 +31,19 @@ import 'package:drift_dev/api/migrations.dart';
 part 'app_db.g.dart';
 
 @DriftDatabase(
-  tables: [UserTable, BranchTable, CompanyTable, CurrenciesTable],
+  tables: [
+    UserTable,
+    BranchTable,
+    CompanyTable,
+    CurrenciesTable,
+    SystemDocsTable,
+    SalesManSettingsTable,
+    UserStoreTable,
+    UnitsTable,
+    ItemGroupsTable,
+    ItemsTable,
+    ItemUnitsTable,
+  ],
 )
 class AppDatabase extends _$AppDatabase {
   static final AppDatabase _instance = AppDatabase();

@@ -21,13 +21,27 @@ class HttpMethods extends BaseHttpMethods {
   @override
   Future<T> getApi<T>({required String url}) async {
     try {
-      final response =
-          await client.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
-      return response as T;
-    } on FormatException catch (_) {
-      throw const FormatException("Unable to process the data");
-    } catch (e) {
-      rethrow;
+      final response = await client.get(
+        HelperService.buildUri(url),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${_sharedPer.getString("token")}'
+        },
+      ).timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {
+          return throw TimeoutException("Request timed out");
+        },
+      );
+      return _processResponse(response);
+    } on SocketException {
+      throw FetchDataException(
+        'No Internet connection',
+      );
+    } on TimeoutException {
+      throw RequestTimeOut(
+        'API not responded in time',
+      );
     }
     // on SocketException catch (e) {
     //   throw SocketException(e.toString());

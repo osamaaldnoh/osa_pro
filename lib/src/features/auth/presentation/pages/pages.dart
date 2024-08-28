@@ -18,11 +18,11 @@ class AuthPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Obx(() {
           switch (authController.authStatus.value) {
-            case LoginStatus.LOADING:
+            case RequestStatus.LOADING:
               return Center(
                 child: CircularProgressIndicator(),
               );
-            case LoginStatus.COMPLLETED:
+            case RequestStatus.COMPLLETED:
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -41,7 +41,7 @@ class AuthPage extends StatelessWidget {
                 ],
               );
 
-            case LoginStatus.ERROR:
+            case RequestStatus.ERROR:
               return Center(
                 child: Text(authController.message.value),
               );

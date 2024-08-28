@@ -15,15 +15,15 @@ class UserInfoPage extends StatelessWidget {
         ),
         body: Obx(() {
           switch (userInfoController.status.value) {
-            case LoginStatus.LOADING:
+            case RequestStatus.LOADING:
               return Center(
                 child: CircularProgressIndicator(),
               );
-            case LoginStatus.ERROR:
+            case RequestStatus.ERROR:
               return Center(
                 child: Text(userInfoController.message.value),
               );
-            case LoginStatus.COMPLLETED:
+            case RequestStatus.COMPLLETED:
               return Column(
                 children: [
                   Text(

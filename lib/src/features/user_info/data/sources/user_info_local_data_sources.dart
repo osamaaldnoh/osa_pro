@@ -28,8 +28,7 @@ class UserInfoLocalDataSourcesImp extends UserInfoLocalDataSources {
 
   @override
   Future<int> saveUser(UserModel userModel) async {
-    
-    print("User Model :${userModel}");
+    // print("User Model :${userModel}");
     AppDatabase db = AppDatabase.instance();
     // try {
     final req = await db.into(db.userTable).insert(userModel.toCompanion());

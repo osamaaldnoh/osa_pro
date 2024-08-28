@@ -27,7 +27,8 @@ class CurrenciesBinding implements Bindings {
               repository: Get.find(),
             ),
         fenix: true);
-    Get.lazyPut(() => CurrenciesController(currenciesUseCase: Get.find()),
+    Get.lazyPut<CurrenciesController>(
+        () => CurrenciesControllerImp(currenciesUseCase: Get.find()),
         fenix: true);
   }
 }

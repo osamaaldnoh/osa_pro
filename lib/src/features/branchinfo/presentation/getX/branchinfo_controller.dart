@@ -6,7 +6,7 @@ import 'package:osa_pro/src/features/branchinfo/domain/usecases/usecases.dart';
 
 class BranchinfoController extends GetxController {
   final GetBranchinfoUseCase _branchinfoUseCase;
-  final status = LoginStatus.NOTHING.obs;
+  final status = RequestStatus.NOTHING.obs;
   RxBool isLoading = false.obs;
   RxString message = ''.obs;
   RxString image = ''.obs;
@@ -33,13 +33,13 @@ class BranchinfoController extends GetxController {
   }
 
   Future<void> getBranchData() async {
-    status.value = LoginStatus.LOADING;
+    status.value = RequestStatus.LOADING;
     final branchData = await _branchinfoUseCase.call();
     branchData.fold((failure) {
-      status.value = LoginStatus.ERROR;
+      status.value = RequestStatus.ERROR;
       message.value = failure.message;
     }, (branchInfo) async {
-      status.value = LoginStatus.COMPLLETED;
+      status.value = RequestStatus.COMPLLETED;
       branchInfoEntity.value = branchInfo;
       image.value = await ConvertAndSaveImage.convertAndSaveImage(
           branchInfoEntity.value.logo);

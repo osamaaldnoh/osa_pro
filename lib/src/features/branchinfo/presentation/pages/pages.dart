@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/enums/login_status.dart';
 import 'package:osa_pro/src/core/routes/routes.dart';
-import 'package:osa_pro/src/core/utils/convert_image.dart';
 import 'package:osa_pro/src/core/widgets/custom_file_image.dart';
 import 'package:osa_pro/src/features/branchinfo/presentation/getX/branchinfo_controller.dart';
 
@@ -19,15 +18,15 @@ class BranchInfoPage extends StatelessWidget {
       ),
       body: Obx(() {
         switch (_branchinfoController.status.value) {
-          case LoginStatus.LOADING:
+          case RequestStatus.LOADING:
             return Center(
               child: CircularProgressIndicator(),
             );
-          case LoginStatus.ERROR:
+          case RequestStatus.ERROR:
             return Center(
               child: Text(_branchinfoController.message.value),
             );
-          case LoginStatus.COMPLLETED:
+          case RequestStatus.COMPLLETED:
             return Center(
               child: Column(
                 children: [

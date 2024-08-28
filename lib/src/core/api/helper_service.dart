@@ -1,7 +1,7 @@
 import 'package:osa_pro/src/core/api/end_points.dart';
 
 class HelperService {
-  static const String host = "192.168.2.21";
+  static const String host = "192.168.2.25";
 
   static const int port = 10222;
   static const String scheme = "http";

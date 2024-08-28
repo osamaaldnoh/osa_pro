@@ -15,15 +15,15 @@ class CompanyInfoPage extends StatelessWidget {
       ),
       body: Obx(() {
         switch (_companyController.status.value) {
-          case LoginStatus.LOADING:
+          case RequestStatus.LOADING:
             return Center(
               child: CircularProgressIndicator(),
             );
-          case LoginStatus.ERROR:
+          case RequestStatus.ERROR:
             return Center(
               child: Text(_companyController.message.value),
             );
-          case LoginStatus.COMPLLETED:
+          case RequestStatus.COMPLLETED:
             return Center(
               child: Column(
                 children: [
