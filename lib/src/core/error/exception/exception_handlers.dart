@@ -101,3 +101,8 @@ class EmptyException extends AppException {
   EmptyException([String? message, String? url])
       : super(message, 'Empty Data Local', url);
 }
+
+class LocalDBException extends AppException {
+  LocalDBException([String? message, String? url])
+      : super(message, 'Local DataBase Exception', url);
+}

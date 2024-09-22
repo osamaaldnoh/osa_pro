@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:osa_pro/src/features/units/data/models/models.dart';
+import 'package:osa_pro/src/features/units/data/models/units_models.dart';
 
 @UseRowClass(UnitsModel)
 class UnitsTable extends Table {

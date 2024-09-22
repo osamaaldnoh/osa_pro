@@ -7,7 +7,7 @@ class AuthBinding implements Bindings {
   void dependencies() => Get.lazyPut(
       () => AuthController(
             // loginUserUseCase2: sl(),
-            loginUserUseCase: sl(),
+            loginAuthUseCase: sl(),
             // userLoginUsecase: sl()
           ),
       fenix: true);

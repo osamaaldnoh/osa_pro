@@ -1,5 +1,5 @@
 import 'package:osa_pro/src/core/services/db/app_db.dart';
-import 'package:osa_pro/src/features/units/data/models/models.dart';
+import 'package:osa_pro/src/features/units/data/models/units_models.dart';
 
 abstract class UnitsLocalDataSources {
   Future<List<UnitsModel>> getAllUnits();

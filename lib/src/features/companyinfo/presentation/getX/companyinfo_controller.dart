@@ -36,7 +36,7 @@ class CompanyController extends GetxController {
     }, (companyInfo) {
       status.value = RequestStatus.COMPLLETED;
       companyEntity.value = companyInfo;
-      Get.snackbar("Success", "Branch Added Successfully");
+      // Get.snackbar("Success", "Branch Added Successfully");
     });
   }
 }

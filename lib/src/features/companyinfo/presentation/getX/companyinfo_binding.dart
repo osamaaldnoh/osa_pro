@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/config/config.dart';
-import 'package:osa_pro/src/features/companyinfo/data/implements/implements.dart';
+import 'package:osa_pro/src/features/companyinfo/data/implements/companyinfo_implements.dart';
 import 'package:osa_pro/src/features/companyinfo/data/sources/company_local_data_sources.dart';
 import 'package:osa_pro/src/features/companyinfo/data/sources/company_remote_data_sources.dart';
 import 'package:osa_pro/src/features/companyinfo/domain/repositories/company_repositories.dart';

@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:osa_pro/src/features/items/data/models/models.dart';
+import 'package:osa_pro/src/features/items/data/models/items_models.dart';
 
 @UseRowClass(ItemsModel)
 class ItemsTable extends Table {
@@ -20,6 +20,6 @@ class ItemsTable extends Table {
   TextColumn get orignalCountry => text()();
   TextColumn get itemDescription => text()();
   TextColumn get note => text()();
-  IntColumn get haseAlternated => integer()();
+  BoolColumn get haseAlternated => boolean()();
   BoolColumn get newData => boolean()();
 }

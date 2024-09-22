@@ -1,22 +1,23 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/enums/login_status.dart';
-import 'package:osa_pro/src/features/units/domain/entities/entities.dart';
-import 'package:osa_pro/src/features/units/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/units/domain/entities/units_entities.dart';
+import 'package:osa_pro/src/features/units/domain/usecases/units_usecases.dart';
 
-abstract class UnitsController extends GetxController {
-  void getAllUnits();
-}
+// abstract class UnitsController extends GetxController {
+//   void getAllUnits();
+// }
 
-class UnitsControllerImp extends UnitsController {
+class UnitsController extends GetxController {
   final UnitsUseCase _unitsUseCase;
-  RxList<UnitsEntity> unitsList = RxList([]);
-  RxList<UnitsEntity> get _unitsList => RxList([...unitsList]);
+  final RxList<UnitsEntity> _unitsList = RxList([]);
+  RxList<UnitsEntity> get unitsList => RxList([..._unitsList]);
   final authState = RequestStatus.NOTHING.obs;
   RxString message = ''.obs;
   void setRxRequestStatus(RequestStatus value) => authState.value = value;
-
+  UnitsEntity unitsEntity =
+      UnitsEntity(id: 0, name: '', note: '', newData: false);
   //
-  UnitsControllerImp({required UnitsUseCase unitsUseCase})
+  UnitsController({required UnitsUseCase unitsUseCase})
       : _unitsUseCase = unitsUseCase;
 
   @override
@@ -25,7 +26,6 @@ class UnitsControllerImp extends UnitsController {
     getAllUnits();
   }
 
-  @override
   void getAllUnits() async {
     setRxRequestStatus(RequestStatus.LOADING);
     final unitsResponseList = await _unitsUseCase.call();
@@ -37,5 +37,15 @@ class UnitsControllerImp extends UnitsController {
       setRxRequestStatus(RequestStatus.COMPLLETED);
       print(" unitsResponseList :::::::$data");
     });
+  }
+
+  UnitsEntity findByName(String name) {
+    return _unitsList.firstWhere((value) => value.name == name,
+        orElse: () => unitsEntity);
+  }
+
+  UnitsEntity findByID(int unitId) {
+    return _unitsList.firstWhere((value) => value.id == unitId,
+        orElse: () => unitsEntity);
   }
 }

@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:osa_pro/src/core/config/config.dart';
 import 'package:osa_pro/src/core/services/shared/shared_per.dart';
 
 class AppSharedPerSet extends GetxController {
-  final SharedPreferencesService _sharedPreferencesService = Get.find();
-
+  final SharedPreferencesService _sharedPreferencesService =
+      SharedPreferencesService(sl());
   // Http Connecte
   set setIp(String ip) => _sharedPreferencesService.setString('ip', ip);
   set setPort(String port) => _sharedPreferencesService.setString('port', port);
@@ -25,4 +26,7 @@ class AppSharedPerSet extends GetxController {
   // Language
   set setLanguage(String langCode) =>
       _sharedPreferencesService.setString('lang', langCode);
+
+  set setIsLoginUser(bool isLogin) =>
+      _sharedPreferencesService.setBool("isLogin", isLogin);
 }

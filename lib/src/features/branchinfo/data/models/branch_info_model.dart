@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:osa_pro/src/core/services/db/app_db.dart';
-import 'package:osa_pro/src/features/branchinfo/domain/entities/entities.dart';
+import 'package:osa_pro/src/features/branchinfo/domain/entities/branchinfo_entities.dart';
 
 part 'branch_info_model.g.dart';
 
@@ -24,7 +24,7 @@ class BranchInfoModel extends BranchInfoEntity {
   Map<String, dynamic> toJson() => _$BranchInfoModelToJson(this);
   BranchTableCompanion toCompanion() {
     return BranchTableCompanion(
-      id: Value(id ?? -1),
+      id: Value(id ?? 1),
       companyId: Value(companyId),
       name: Value(name),
       address: Value(address),

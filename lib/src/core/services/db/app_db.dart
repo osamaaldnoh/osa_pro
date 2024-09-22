@@ -1,21 +1,27 @@
 import 'package:drift/drift.dart';
 import 'dart:io'; // needed to generate/find a path to db
 import 'package:drift/native.dart'; // needed to use NativeDatabase
+import 'package:osa_pro/src/core/error/exception/exception_handlers.dart';
+import 'package:osa_pro/src/core/services/db/table/accounts_table.dart';
 import 'package:osa_pro/src/core/services/db/table/currencies_table.dart';
+import 'package:osa_pro/src/core/services/db/table/doc_table.dart';
+import 'package:osa_pro/src/core/services/db/table/inventory_doc_data_table.dart';
+import 'package:osa_pro/src/core/services/db/table/item_alternative_table.dart';
+import 'package:osa_pro/src/core/services/db/table/item_barcode_table.dart';
 import 'package:osa_pro/src/core/services/db/table/item_groups_table.dart';
 import 'package:osa_pro/src/core/services/db/table/item_units_table.dart';
 import 'package:osa_pro/src/core/services/db/table/items_table.dart';
 import 'package:osa_pro/src/core/services/db/table/sales_man_settings_table.dart';
+import 'package:osa_pro/src/core/services/db/table/stoperation_table.dart';
 import 'package:osa_pro/src/core/services/db/table/system_docs_table.dart';
 import 'package:osa_pro/src/core/services/db/table/units_table.dart';
 import 'package:osa_pro/src/core/services/db/table/user_store_table.dart';
-import 'package:osa_pro/src/features/item_groups/data/models/models.dart';
-import 'package:osa_pro/src/features/item_units/data/models/models.dart';
-import 'package:osa_pro/src/features/items/data/models/models.dart';
-import 'package:osa_pro/src/features/sales_man_settings/data/models/models.dart';
-import 'package:osa_pro/src/features/system_docs/data/models/models.dart';
-import 'package:osa_pro/src/features/units/data/models/models.dart';
-import 'package:osa_pro/src/features/user_store/data/models/models.dart';
+import 'package:osa_pro/src/features/item_groups/data/models/item_groups_models.dart';
+import 'package:osa_pro/src/features/item_units/data/models/item_units_models.dart';
+import 'package:osa_pro/src/features/sales_man_settings/data/models/sales_man_settings_models.dart';
+import 'package:osa_pro/src/features/system_docs/data/models/system_docs_models.dart';
+import 'package:osa_pro/src/features/units/data/models/units_models.dart';
+import 'package:osa_pro/src/features/user_store/data/models/store_models.dart';
 import 'package:path_provider/path_provider.dart'; // needed to get path to document's directory
 import 'package:path/path.dart' as p;
 import 'package:osa_pro/src/core/services/db/table/branch_table.dart';
@@ -26,6 +32,14 @@ import 'package:osa_pro/src/features/companyinfo/data/models/company_info_model.
 import 'package:osa_pro/src/features/branchinfo/data/models/branch_info_model.dart';
 import 'package:osa_pro/src/features/user_info/data/models/user_model.dart';
 import 'package:osa_pro/src/features/currencies/data/models/currencies_model.dart';
+import 'package:osa_pro/src/features/items/data/models/items_models.dart';
+import 'package:osa_pro/src/features/item_alternative/data/models/item_alternative_models.dart';
+import 'package:osa_pro/src/features/item_barcode/data/models/item_barcode_models.dart';
+import 'package:osa_pro/src/features/accounts/data/models/accounts_models.dart';
+import 'package:osa_pro/src/features/stoperation/data/models/stoperation_models.dart';
+import 'package:osa_pro/src/features/store_inventory_document/data/models/doc_models.dart';
+import 'package:osa_pro/src/features/inventory_items/data/models/models.dart';
+
 import 'package:drift_dev/api/migrations.dart';
 
 part 'app_db.g.dart';
@@ -43,6 +57,12 @@ part 'app_db.g.dart';
     ItemGroupsTable,
     ItemsTable,
     ItemUnitsTable,
+    ItemAlternativeTable,
+    ItemBarcodeTable,
+    AccountsTable,
+    StoperationTable,
+    DocTable,
+    InventoryDocDataTable,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -53,7 +73,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration {
@@ -80,6 +100,20 @@ class AppDatabase extends _$AppDatabase {
         }
       },
     );
+  }
+
+  Future<void> saveAll<T extends Table, D>(
+    TableInfo<T, D> table,
+    List<Insertable<D>> models,
+  ) async {
+    try {
+      final db = AppDatabase.instance();
+      await db.batch((batch) {
+        batch.insertAllOnConflictUpdate(table, models);
+      });
+    } catch (e) {
+      throw LocalDBException(e.toString());
+    }
   }
 }
 

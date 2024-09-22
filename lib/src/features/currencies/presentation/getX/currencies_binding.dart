@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/config/config.dart';
-import 'package:osa_pro/src/features/currencies/data/implements/implements.dart';
+import 'package:osa_pro/src/features/currencies/data/implements/currencies_implements.dart';
 import 'package:osa_pro/src/features/currencies/data/sources/currencies_local_data_sources.dart';
 import 'package:osa_pro/src/features/currencies/data/sources/currencies_remote_data_sources.dart';
 import 'package:osa_pro/src/features/currencies/domain/repositories/currencies_repositories.dart';

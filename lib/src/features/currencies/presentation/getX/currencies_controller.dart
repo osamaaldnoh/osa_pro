@@ -40,7 +40,7 @@ class CurrenciesControllerImp extends CurrenciesController {
       setRxRequestStatus(RequestStatus.COMPLLETED);
       currenciesList.value = data;
       // print(data);
-      Get.snackbar("Success", "Currencies Added Successfully");
+      // Get.snackbar("Success", "Currencies Added Successfully");
     });
   }
 }

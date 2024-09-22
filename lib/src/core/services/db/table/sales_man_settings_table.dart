@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:osa_pro/src/features/sales_man_settings/data/models/models.dart';
+import 'package:osa_pro/src/features/sales_man_settings/data/models/sales_man_settings_models.dart';
 
 @UseRowClass(SalesManSettingsModel)
 class SalesManSettingsTable extends Table {

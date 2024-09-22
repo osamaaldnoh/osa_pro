@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:osa_pro/src/features/item_groups/data/models/models.dart';
+import 'package:osa_pro/src/features/item_groups/data/models/item_groups_models.dart';
 
 @UseRowClass(ItemGroupsModel)
 class ItemGroupsTable extends Table {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:osa_pro/src/core/constants/constants.dart';
+import 'package:osa_pro/src/core/constants/colors.dart';
+import 'package:osa_pro/src/core/constants/dimensions.dart';
+import 'package:osa_pro/src/core/constants/text_style.dart';
 
 class AppTheme {
   static ThemeData buildLightThemeData() {
@@ -7,27 +9,27 @@ class AppTheme {
     // final baseTextTheme = GoogleFonts.interTextTheme(base.textTheme);
     return base.copyWith(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: AppColorrrs.white,
-      primaryColor: AppColorrrs.primary,
-      highlightColor: AppColorrrs.secondary,
-      // hintColor: AppColorrrs.secondaryTextColor,
-      disabledColor: AppColorrrs.disabled,
-      splashColor: AppColorrrs.secondaryWhite,
-      colorScheme: ColorScheme.light(
-        secondary: AppColorrrs.secondary,
-        onPrimary: AppColorrrs.info,
-        primary: AppColorrrs.primary,
-        onPrimaryContainer: AppColorrrs.tansparentPrimary,
-        error: AppColorrrs.error,
-        onSecondaryContainer: AppColorrrs.white,
+      scaffoldBackgroundColor: AppColors.bgColor,
+      primaryColor: AppColors.primaryColor,
+      highlightColor: AppColors.whiteColor,
+      // hintColor: AppColors.secondaryTextColor,
+      disabledColor: AppColors.hintTextColor,
+      splashColor: AppColors.secondaryColor,
+      colorScheme: const ColorScheme.light(
+        secondary: AppColors.primaryColor,
+        onPrimary: AppColors.whiteColor,
+        primary: AppColors.primaryColor,
+        onPrimaryContainer: AppColors.whiteColor,
+        error: AppColors.redColor,
+        onSecondaryContainer: AppColors.whiteColor,
         // onSecondaryContainer: Color(0xFFF3F9FF),
-        outline: AppColorrrs.gray2,
+        outline: AppColors.primaryColor,
         // outline: Color(0xff2C66B4),
-        onTertiary: AppColorrrs.tertiary,
+        onTertiary: AppColors.primaryColor,
         // onTertiary: Color(0xFFE9F3FF),
-        primaryContainer: AppColorrrs.secondaryWhite,
+        primaryContainer: AppColors.whiteColor,
         // primaryContainer: Color(0xFFf0f0f0),
-        secondaryContainer: AppColorrrs.secondaryWhite,
+        secondaryContainer: AppColors.whiteColor,
 
         // secondaryContainer: Color(0xFFF2F2F2),
       ),
@@ -56,45 +58,25 @@ class AppTheme {
         labelMedium: AppTextStyle.labelMedium,
         labelSmall: AppTextStyle.labelSmall,
       ),
-      // headline1: TextStyle(
-      //   fontWeight: FontWeight.bold, fontSize: 22, color: AppColorrrs.blackColor,
-      //   fontFamily: FontConstants.fontLight,
-      //   ),
-      // headline2: TextStyle(
-      //     fontWeight: FontWeight.bold, fontSize: 26, color: AppColorrrs.blackColor,
-      //      fontFamily: FontConstants.fontLight,
-      //      ),
-      // bodyText1: TextStyle(
-      //     height: 2,
-      //     color: AppColorrrs.grayColor,
-      //     fontWeight: FontWeight.bold,
-      //     fontSize: 14,
-      //      fontFamily: FontConstants.fontLight,),
-      // bodyText2: TextStyle(height: 2, color: AppColorrrs.grayColor, fontSize: 14,
-      //  fontFamily: FontConstants.fontLight,),
-      // ),
 
       // cardTheme
-      cardTheme: CardTheme(
-          color: AppColorrrs.white,
-          // elevation: SizeManager.elevationZero,
-          shadowColor: AppColorrrs.grayTie),
+      cardTheme: const CardTheme(
+          color: AppColors.whiteColor,
+          elevation: SizeManager.elevationZero,
+          shadowColor: AppColors.blackColor),
 
       // appBarTheme
       appBarTheme: AppBarTheme(
         centerTitle: true,
-        color: AppColorrrs.primary,
-        iconTheme: IconThemeData(
-          color: AppColorrrs.secondary,
+        color: AppColors.primaryColor,
+        iconTheme: const IconThemeData(
+          color: AppColors.titleBarColor,
         ),
-        // elevation: SizeManager.elevationZero,
-        shadowColor: AppColorrrs.gray2,
-        titleTextStyle: AppTextStyle.headlineMedium.apply(
-          color: AppColorrrs.white,
+        elevation: SizeManager.elevationZero,
+        shadowColor: AppColors.shadowsColor,
+        titleTextStyle: AppTextStyle.headlineMedium.copyWith(
+          color: AppColors.titleBarColor,
         ),
-        // .robotoMedium.copyWith(
-        //   color: AppColorrrs.white,
-        // ),
         // .copyWith(
         //   fontSize: FontSize.fontSizeLarge,
         //   fontWeight: FontWeightManager.regular,
@@ -102,25 +84,20 @@ class AppTheme {
       ),
 
       // buttonTheme
-      buttonTheme: ButtonThemeData(
+      buttonTheme: const ButtonThemeData(
         shape: StadiumBorder(),
-        disabledColor: AppColorrrs.info,
-        buttonColor: AppColorrrs.primary,
-        splashColor: AppColorrrs.secondary,
+        disabledColor: AppColors.bottomSheet,
+        buttonColor: AppColors.primaryColor,
+        splashColor: AppColors.secondaryColor,
       ),
 
       // ElevatedButton
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           textStyle: AppTextStyle.bodyMedium,
-          // .copyWith(
-          //   // fontSize: FontSize.fontSizeLarge,
-          //   // fontWeight: FontWeightManager.regular,
-          //   color: AppColorrrs.white,
-          // ),
-          backgroundColor: AppColorrrs.primary,
+          backgroundColor: AppColors.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(RadiusManager.r20),
           ),
         ),
       ),
@@ -128,22 +105,19 @@ class AppTheme {
       // OutlinedButton
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          // primary: AppColorrrsNew.kwhiteColor,
-          side: BorderSide(
-            color: AppColorrrs.primary,
+          // primary: AppColorsNew.kwhiteColor,
+          side: const BorderSide(
+            color: AppColors.primaryColor,
           ),
-          textStyle: AppTextStyle.bodyMedium.apply(color: AppColorrrs.primary),
-          // robotoMedium.copyWith(
-          //   color: AppColorrrs.primary,
-          // ),
-          // AppStyles.bodyMedium,
+          textStyle:
+              AppTextStyle.bodyMedium.apply(color: AppColors.primaryColor),
           //   .copyWith(
           //   fontSize: FontSize.fontSizeLarge,
           //   fontWeight: FontWeightManager.regular,
-          //   color: AppColorrrsNew.kprimaryColor,
+          //   color: AppColorsNew.kprimaryColor,
           // ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(RadiusManager.r15),
           ),
         ),
       ),
@@ -151,82 +125,73 @@ class AppTheme {
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColorrrs.white,
+        fillColor: AppColors.whiteColor,
         // contentPadding
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
+          horizontal: PaddingManager.p16,
+          vertical: PaddingManager.p8,
         ),
         // Hint Style
         hintStyle: AppTextStyle.displayMedium,
-        // TextStyle(
-        //   color: AppColorrrs.gray2,
-        //   fontSize: 14,
-        //   // fontWeight: FontWeightManager.medium,
-        // ),
 
         // Label Style
-        labelStyle: TextStyle(
-          color: AppColorrrs.grayTie,
-          fontSize: 14,
+        labelStyle: AppTextStyle.displaySmall.copyWith(
+          color: AppColors.bottomSheet,
+          fontSize: AppFontSize.fontSizeDefault,
           // fontWeight: FontWeightManager.medium,
         ),
 
         // Error Style
-        errorStyle: TextStyle(
-          color: AppColorrrs.red,
-          fontSize: 12,
-          // fontWeight: FontWeightManager.medium,
+        errorStyle: AppTextStyle.displaySmall.copyWith(
+          color: AppColors.redColor,
         ),
-        // border: ,
+
         // Enabled Border
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              15,
+              RadiusManager.r15,
             ),
           ),
-          borderSide: BorderSide(
-            color: AppColorrrs.grayscale400,
-          ),
+          borderSide: BorderSide.none,
         ),
 
         // Focused Border
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              15,
+              RadiusManager.r15,
             ),
           ),
           borderSide: BorderSide(
-            color: AppColorrrs.primary,
-            width: 1.5,
+            color: AppColors.primaryColor,
+            width: SizeManager.widthBorder,
           ),
         ),
 
         // Error Border
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              15,
+              RadiusManager.r15,
             ),
           ),
           borderSide: BorderSide(
-            color: AppColorrrs.red,
-            width: 1.5,
+            color: AppColors.redColor,
+            width: SizeManager.widthBorder,
           ),
         ),
 
         // Focused Error Border
-        focusedErrorBorder: OutlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              15,
+              RadiusManager.r15,
             ),
           ),
           borderSide: BorderSide(
-            color: AppColorrrs.primary,
-            width: 1.5,
+            color: AppColors.primaryColor,
+            width: SizeManager.widthBorder,
           ),
         ),
       ),

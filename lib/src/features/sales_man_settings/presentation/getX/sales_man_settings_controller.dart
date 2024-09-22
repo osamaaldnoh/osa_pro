@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/enums/login_status.dart';
-import 'package:osa_pro/src/features/sales_man_settings/domain/entities/entities.dart';
-import 'package:osa_pro/src/features/sales_man_settings/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/sales_man_settings/domain/entities/sales_man_settings_entities.dart';
+import 'package:osa_pro/src/features/sales_man_settings/domain/usecases/sales_man_settings_usecases.dart';
 
 abstract class SalesManSettingsController extends GetxController {
   getSalesManSettings();

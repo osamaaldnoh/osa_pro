@@ -70,7 +70,7 @@ class LoginRemoteDataSourceImp extends LoginRemoteDataSource {
       await _sharedPreferencesService.setString(
           'refreshToken', authResponseModel.refreshToken);
       await _sharedPreferencesService.setString(
-        'userid',
+        'userId',
         authResponseModel.userId,
       );
 

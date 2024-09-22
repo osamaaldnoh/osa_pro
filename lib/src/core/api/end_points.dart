@@ -9,9 +9,13 @@ class EndPoints {
   static const String systemDocsUri = 'syncdata/systemdocs';
   static const String salesManSettingsUri = 'syncdata/salesmansettings';
   static const String userPayMethodUri = 'syncdata/userpaymethod';
-  static const String userStoreUri = 'syncdata/userstore';
+  static const String userStoreUri = 'syncdata/gardstore';
   static const String unitsUri = 'syncdata/units';
   static const String itemGroupsUri = 'syncdata/itemgroups';
   static const String itemsUri = 'syncdata/items';
   static const String itemUnitsUri = 'syncdata/itemunits';
+  static const String itemAlternativeUri = 'syncdata/itemalternative';
+  static const String itemBarcodeUri = 'syncdata/itembarcode';
+  static const String accountsUri = 'syncdata/accounts';
+  static const String stoperationUri = 'syncdata/stoperation';
 }

@@ -3,11 +3,20 @@ import 'package:osa_pro/src/features/branchinfo/data/models/branch_info_model.da
 
 abstract class BranchLocalDataSources {
   Future<BranchInfoModel> getBranch(int branchId);
+  // Future<List<BranchInfoModel>> getBranchs();
   Future<int> saveBranch(BranchInfoModel branchModel);
 }
 
 class BranchLocalDataSourcesImp extends BranchLocalDataSources {
-  @override
+  // @override
+  // Future<List<BranchInfoModel>> getBranchs() async {
+  //   AppDatabase db = AppDatabase.instance();
+  //   List<BranchInfoModel> branchModelList =
+  //       await (db.select(db.branchTable).get());
+
+  //   return branchModelList;
+  // }
+
   @override
   Future<BranchInfoModel> getBranch(int branchId) async {
     AppDatabase db = AppDatabase.instance();
@@ -21,11 +30,9 @@ class BranchLocalDataSourcesImp extends BranchLocalDataSources {
   @override
   Future<int> saveBranch(BranchInfoModel branchModel) async {
     AppDatabase db = AppDatabase.instance();
-    try {
-      await db.into(db.branchTable).insert(branchModel.toCompanion());
-      return branchModel.id ?? 0;
-    } catch (e) {
-      throw Exception("Local save branch info error");
-    }
+
+    final result =
+        await db.into(db.branchTable).insert(branchModel.toCompanion());
+    return result;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:osa_pro/src/core/api/end_points.dart';
+import 'package:osa_pro/src/core/api/helper_service.dart';
 import 'package:osa_pro/src/core/config/config.dart';
 import 'package:osa_pro/src/core/error/exception/exception_handlers.dart';
 import 'package:osa_pro/src/core/api/methods/http_methods.dart';
@@ -15,15 +16,9 @@ class CompanyRemoteDataSourceImp extends CompanyRemoteDataSource {
       SharedPreferencesService(sl());
   @override
   Future<CompanyModel> getCompanyInfo() async {
-    final body = {
-      'userid': _sharedPreferencesService.getString('userid'),
-      'branchid': _sharedPreferencesService.getString('branchid'),
-      "dateTime": null
-    };
-
     try {
       final remoteCompany = await _networkApiServices.postApi(
-          pathUri: EndPoints.companyInfoUri, body: body);
+          pathUri: EndPoints.companyInfoUri, body: HelperService.body);
       _sharedPreferencesService.setString(
           'companyid', remoteCompany['id'].toString());
       return CompanyModel.fromJson(remoteCompany);

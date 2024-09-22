@@ -20,4 +20,10 @@ class AppSharedPerGet extends GetxController {
 
   // Branch
   String? get getbranchId => _sharedPreferencesService.getString('branchId');
+
+  //Lang
+  String? get getLanguage => _sharedPreferencesService.getString('lang');
+
+  //Login
+  bool? get getisLogin => _sharedPreferencesService.getBool('isLogin');
 }

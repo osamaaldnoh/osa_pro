@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/config/config.dart';
-import 'package:osa_pro/src/features/sales_man_settings/data/implements/implements.dart';
+import 'package:osa_pro/src/features/sales_man_settings/data/implements/sales_man_settings_implements.dart';
 import 'package:osa_pro/src/features/sales_man_settings/data/sources/sales_man_settings_local_data_sources.dart';
 import 'package:osa_pro/src/features/sales_man_settings/data/sources/sales_man_settings_remote_data_sources.dart';
-import 'package:osa_pro/src/features/sales_man_settings/domain/repositories/repositories.dart';
-import 'package:osa_pro/src/features/sales_man_settings/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/sales_man_settings/domain/repositories/sales_man_settings_repositories.dart';
+import 'package:osa_pro/src/features/sales_man_settings/domain/usecases/sales_man_settings_usecases.dart';
 import 'sales_man_settings_controller.dart';
 
 class SalesManSettingsBinding implements Bindings {

@@ -6,7 +6,7 @@ import 'package:osa_pro/src/core/error/exception/exception_handlers.dart';
 import 'package:osa_pro/src/core/error/failure.dart';
 import 'package:osa_pro/src/features/user_info/domain/entities/user_entity.dart';
 // import 'package:osa_pro/src/features/auth/data/sources/login_local_data_source.dart';
-import 'package:osa_pro/src/features/user_info/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/user_info/domain/usecases/user_usecases.dart';
 
 class UserInfoController extends GetxController {
   RxString message = ''.obs;
@@ -47,7 +47,7 @@ class UserInfoController extends GetxController {
       print("User Info ::::: ${loginuser}");
       status.value = RequestStatus.COMPLLETED;
       userEntity.value = loginuser;
-      Get.snackbar("Success", "Post Added Successfully");
+      // Get.snackbar("Success", "Post Added Successfully");
       // LoadedPostsState(posts: posts);
     });
   }

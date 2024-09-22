@@ -1,9 +1,10 @@
 import 'package:osa_pro/src/core/services/db/app_db.dart';
-import 'package:osa_pro/src/features/item_groups/data/models/models.dart';
+import 'package:osa_pro/src/features/item_groups/data/models/item_groups_models.dart';
 
 abstract class ItemGroupsLocalDataSources {
   Future<List<ItemGroupsModel>> getAllItemGroups();
   Future<ItemGroupsModel?> getItemGroup(int itemgroupId);
+  Future<List<ItemGroupsModel>> getItemGroupsWhereItemId(int itemGroupId);
   Future<int> saveItemGroup(ItemGroupsModel itemGroupsModel);
 }
 
@@ -32,5 +33,16 @@ class ItemGroupsLocalDataSourcesImp implements ItemGroupsLocalDataSources {
     final result =
         await db.into(db.itemGroupsTable).insert(itemGroupsModel.toCompanion());
     return result;
+  }
+
+  @override
+  Future<List<ItemGroupsModel>> getItemGroupsWhereItemId(
+      int itemGroupId) async {
+    AppDatabase db = AppDatabase.instance();
+    List<ItemGroupsModel> itemUnits = await (db.select(db.itemGroupsTable)
+          ..where((tbl) => tbl.code.equals(itemGroupId)))
+        .get();
+
+    return itemUnits;
   }
 }

@@ -1,5 +1,5 @@
 import 'package:osa_pro/src/core/services/db/app_db.dart';
-import 'package:osa_pro/src/features/system_docs/data/models/models.dart';
+import 'package:osa_pro/src/features/system_docs/data/models/system_docs_models.dart';
 
 abstract class SystemDocsLocalDataSources {
   Future<List<SystemDocsModel>> getAllSystemDocs();

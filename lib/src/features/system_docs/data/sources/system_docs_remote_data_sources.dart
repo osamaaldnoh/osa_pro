@@ -2,7 +2,7 @@ import 'package:osa_pro/src/core/api/end_points.dart';
 import 'package:osa_pro/src/core/api/methods/http_methods.dart';
 import 'package:osa_pro/src/core/config/config.dart';
 import 'package:osa_pro/src/core/error/exception/exception_handlers.dart';
-import 'package:osa_pro/src/features/system_docs/data/models/models.dart';
+import 'package:osa_pro/src/features/system_docs/data/models/system_docs_models.dart';
 
 abstract class SystemDocsRemoteDataSource {
   Future<List<SystemDocsModel>> getAllSystemDocs();

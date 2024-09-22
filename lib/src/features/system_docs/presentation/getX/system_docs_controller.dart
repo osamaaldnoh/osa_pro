@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/enums/login_status.dart';
-import 'package:osa_pro/src/features/system_docs/domain/entities/entities.dart';
+import 'package:osa_pro/src/features/system_docs/domain/entities/system_docs_entities.dart';
 
-import 'package:osa_pro/src/features/system_docs/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/system_docs/domain/usecases/system_docs_usecases.dart';
 
 abstract class SystemDocsController extends GetxController {
   getAllSystemDocs();

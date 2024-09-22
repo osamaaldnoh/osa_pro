@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:osa_pro/src/core/constants/colors.dart';
+import 'package:osa_pro/src/core/constants/colorss.dart';
 import 'package:osa_pro/src/core/enums/login_status.dart';
 import 'package:osa_pro/src/core/routes/names.dart';
+import 'package:osa_pro/src/core/widgets/custom_loader.dart';
 import 'package:osa_pro/src/features/auth/presentation/getX/auth_controller.dart';
+import 'package:osa_pro/src/features/auth/presentation/widgets/app_bar_login_widget.dart';
+import 'package:osa_pro/src/features/auth/presentation/widgets/form_login_widget.dart';
 
 class AuthPage extends StatelessWidget {
   AuthPage({Key? key}) : super(key: key);
@@ -11,44 +14,31 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Auth Page'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Obx(() {
-          switch (authController.authStatus.value) {
-            case RequestStatus.LOADING:
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            case RequestStatus.COMPLLETED:
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Success" + "Post Added Successfully",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      Get.toNamed(RoutesName.userInfoPage);
-                    },
-                    child: Text(
-                      "User Info",
-                    ),
-                  ),
-                ],
-              );
+      // backgroundColor: Theme.of(context).primaryColor,
+      body: Obx(
+        () => CustomLoader(
+          isLoading: authController.authState.value == RequestStatus.LOADING,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const AppBarLoginWidget(),
+                FormLoginWidget(),
+              ],
+            ),
+          ),
 
-            case RequestStatus.ERROR:
-              return Center(
-                child: Text(authController.message.value),
-              );
-            default:
-              return LoginFormField(authController: authController);
-          }
-        }),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: [
+          //     Expanded(
+          //       child: AppBarLoginWidget(),
+          //     ),
+          //     Expanded(child: Center(child: FormLoginWidget()))
+          //   ],
+          // )
+        ),
       ),
     );
   }
@@ -65,11 +55,11 @@ class LoginFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: authController.formstate,
+      key: authController.loginFormKey,
       child: Column(
         children: [
           TextFormField(
-            controller: authController.userName,
+            controller: authController.userNameController,
             keyboardType: TextInputType.name,
             validator: (value) {
               if (value!.isEmpty) {
@@ -98,7 +88,7 @@ class LoginFormField extends StatelessWidget {
             height: 10,
           ),
           TextFormField(
-            controller: authController.passWord,
+            controller: authController.passwordController,
             keyboardType: TextInputType.visiblePassword,
             validator: (value) {
               if (value!.isEmpty) {
@@ -133,7 +123,7 @@ class LoginFormField extends StatelessWidget {
                     backgroundColor: AppColorrrs.primary,
                   ),
                   onPressed: () {
-                    authController.loginUser1();
+                    authController.login();
                   },
                   child: Text("Login",
                       style: Theme.of(context).textTheme.bodyMedium)))

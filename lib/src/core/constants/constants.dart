@@ -1,6 +1,5 @@
+library constants;
 
-    library constants;
-    export 'colors.dart';
-    export 'icons.dart';
-    export 'text_style.dart';
-    
+export 'colorss.dart';
+export 'iconss.dart';
+export 'text_style1.dart';

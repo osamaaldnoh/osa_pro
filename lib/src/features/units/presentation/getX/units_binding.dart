@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:osa_pro/src/core/config/config.dart';
-import 'package:osa_pro/src/features/units/data/implements/implements.dart';
+import 'package:osa_pro/src/features/units/data/implements/units_implements.dart';
 import 'package:osa_pro/src/features/units/data/sources/units_local_data_sources.dart';
 import 'package:osa_pro/src/features/units/data/sources/units_remote_data_sources.dart';
-import 'package:osa_pro/src/features/units/domain/repositories/repositories.dart';
-import 'package:osa_pro/src/features/units/domain/usecases/usecases.dart';
+import 'package:osa_pro/src/features/units/domain/repositories/units_repositories.dart';
+import 'package:osa_pro/src/features/units/domain/usecases/units_usecases.dart';
 import 'units_controller.dart';
 
 class UnitsBinding implements Bindings {
@@ -23,7 +23,7 @@ class UnitsBinding implements Bindings {
     Get.lazyPut(() => UnitsUseCase(repository: Get.find()), fenix: true);
 
     Get.lazyPut<UnitsController>(
-        () => UnitsControllerImp(unitsUseCase: Get.find()),
+        () => UnitsController(unitsUseCase: Get.find()),
         fenix: true);
   }
 }

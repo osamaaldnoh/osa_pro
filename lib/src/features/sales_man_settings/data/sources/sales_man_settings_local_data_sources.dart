@@ -1,5 +1,5 @@
 import 'package:osa_pro/src/core/services/db/app_db.dart';
-import 'package:osa_pro/src/features/sales_man_settings/data/models/models.dart';
+import 'package:osa_pro/src/features/sales_man_settings/data/models/sales_man_settings_models.dart';
 
 abstract class SalesManSettingsLocalDataSources {
   Future<SalesManSettingsModel?> getSalesManSettings();
